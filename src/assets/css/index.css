@@ -18,6 +18,9 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     display: none;
 }
+body{
+    overflow: none;
+}
 /* img{
     width: 100%;
     height: 100%; */
