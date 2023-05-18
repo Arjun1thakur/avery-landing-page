@@ -12,6 +12,7 @@
     box-shadow: 0px 14px 27px #00000017;
     border-radius: 13px;
     padding: 30px 30px 10px 30px;
+    animation: contactTop 2s ease 0s 1 normal forwards;
 }
 input,select,option{
     all: unset;
@@ -34,4 +35,16 @@ label{
     font-size: 12px;
     font-family: Aktifoa;
     color: #292929;
+}
+
+@keyframes contactTop {
+	0% {
+		opacity: 0;
+		transform: translateY(-550px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }

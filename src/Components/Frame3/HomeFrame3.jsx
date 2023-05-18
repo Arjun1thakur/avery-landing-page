@@ -55,7 +55,9 @@ const HomeFrame3 = ({prop}) => {
                     </div>
                 </div>
             </div>
-                <button className='btn' onClick={()=>{}}>
+                <button className='btn' onClick={()=>{
+                    window.scrollTo(0, 0)
+                    prop()}}>
                     Request a call back
                     <i className="fa-solid fa-arrow-right btnarrow"></i>
                 </button>

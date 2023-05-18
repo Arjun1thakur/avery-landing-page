@@ -3,7 +3,12 @@
     background-color: #E5E5E5;
 }
 .HomeFrame3img{
-    width: 681px;
+  width: 681px;
+  height: auto;
+}
+.HomeFrame3img img{
+    width: 100%;
+    height: 100%;
 }
 .bookslot{
     padding: 100px 90px;

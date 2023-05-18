@@ -1,3 +1,11 @@
+@media screen and (max-width:1100px){
+    .bookslot{
+        padding: 100px 20px !important;
+    }
+    .HomeFrame3img{
+        width: 80% !important;
+    }
+}
 @media screen and (max-width:800px){
     .HomeContent{
         width: auto;
@@ -36,7 +44,7 @@
     }
     .HomeFrame3img{
         height: 400px;
-        width: 100%;
+        width: 100% !important;
         background-position: center top;
         background-size: 100% auto !important;
     }
@@ -49,9 +57,10 @@
         width: 80%;
     }
     .footdivide{
-        width: 120%;
+        width: 100%;
     }
     input,select{
-        width: 120px;
+        width: 30vw;
+        margin:0 0 0 5px;
     }
 }

@@ -1,0 +1,26 @@
+.toast{
+    position: absolute;
+    top: 10px;
+    padding: 15px;
+    background-color: green;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    right: 10px;
+    width: 300px;
+    animation: slider 1s ease 0s 1 normal forwards;
+}
+.toastMessage{
+    padding: 0px 10px;
+}
+@keyframes slider {
+	0% {
+		opacity: 0;
+		transform: translateX(250px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}

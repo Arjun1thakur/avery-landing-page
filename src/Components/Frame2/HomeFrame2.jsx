@@ -24,6 +24,8 @@ const HomeFrame2 = ({prop}) => {
               <li>Our digital overlaminates can be used on a variety of substrates, including banners, vehicle graphics, outdoor signage, and more.</li>
             </ul>
             <button className='btn' onClick={()=>{
+              prop()
+              window.scrollTo(0, 0)
               }}>
               Inquire now 
             <i className="fa-solid fa-arrow-right btnarrow"></i>

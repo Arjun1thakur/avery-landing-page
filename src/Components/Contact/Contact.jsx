@@ -1,19 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import './contact.css'
-const Contact = ({prop}) => {
+const Contact = ({prop,updateMessage}) => {
   let [data,setData]=useState({})
   const [errors, setErrors] = useState({})
     useEffect(()=>{
         window.scrollTo(0, 0);
     },[])
-
-  let popUp=()=>{
-    return (
-        <>
-            <div style={{backgroundColor:"green","widows":"300px",padding:"20px"}}>Hello</div>
-        </>
-    )
-  }
   let onChangeHandler=(e)=>{
     setData({...data,[e.target.name]:e.target.value})
   }
@@ -23,7 +15,54 @@ const Contact = ({prop}) => {
 
   let submitHandler=(e)=>{
     e.preventDefault()
-    
+    let errors = {};
+    if (!data.fname) {
+      errors.fname = 'First name is required';
+    }
+    if(data.fname && data.fname.match("^[a-zA-Z]*$") ==null){
+      errors.fname = 'First name is not valid';
+    }
+    if (!data.lname) {
+        errors.lname = 'Last name is required';
+    }
+    if(data.lname && data.lname.match("^[a-zA-Z]*$") ==null){
+        errors.lname = 'Last name is not valid';
+    }
+    if (!data.email) {
+      errors.email = 'Email is required';
+    }
+    if(!emailValidation()){
+        errors.email = 'Email is not valid';
+    }
+    if (!data.number) {
+        errors.number = 'Number is required';
+    }
+    if (data.number && data.number.length!==10) {
+        errors.number = 'Incorrect Number';
+    }
+    if (!data.company) {
+        errors.company = 'Company value is required';
+    }
+    if (!data.state) {
+        errors.state = 'State is required';
+    }
+    if (!data.describe) {
+        errors.describe = 'Discription is required';
+    }
+    if (!data.Distributor) {
+        errors.Distributor = 'Distributor is required';
+    }
+    if (!data.additional) {
+        errors.additional = 'Additional Info is required';
+    }
+    if (Object.keys(errors).length > 0) {
+      setErrors(errors);
+      return;
+    }
+    errors={}
+    prop()
+    window.scrollTo(0,0)
+    updateMessage()
   }
 
   return (
@@ -35,31 +74,31 @@ const Contact = ({prop}) => {
         <div  style={{display:"flex",justifyContent:"space-between"}}>
             <div style={{display:"flex",flexDirection:"column"}}>
                 <label htmlFor="fname">First Name</label>
-                <input value={data.fname} type="text" onChange={onChangeHandler} name='fname' />
+                <input type="text" onChange={onChangeHandler} name='fname' />
                 {errors.fname && <span style={{fontSize:"12px",color:"red"}}>*{errors.fname}</span>}
             </div>
             <div style={{display:"flex",flexDirection:"column"}}>
                 <label htmlFor="lname">Last Name</label>
-                <input type="text"  value={data.lname} onChange={onChangeHandler} name='lname' />
+                <input type="text" onChange={onChangeHandler} name='lname' />
                 {errors.lname && <span style={{fontSize:"12px",color:"red"}}>*{errors.lname}</span>}
             </div>
         </div>
         <div  style={{display:"flex",justifyContent:"space-between"}}>
             <div style={{display:"flex",flexDirection:"column"}}>
                 <label htmlFor="email">Email</label>
-                <input type="email"  value={data.email} onChange={onChangeHandler} name='email'/>
+                <input type="email"  onChange={onChangeHandler} name='email'/>
                 {errors.email && <span style={{fontSize:"12px",color:"red"}}>*{errors.email}</span>}
             </div>
             <div  style={{display:"flex",flexDirection:"column"}}>
                 <label htmlFor="number">Contact Number</label>
-                <input type="number"  value={data.number} onChange={onChangeHandler} name='number' />
+                <input type="number"  onChange={onChangeHandler} name='number' />
                 {errors.number && <span style={{fontSize:"12px",color:"red"}}>*{errors.number}</span>}
             </div>
         </div>
         <div  style={{display:"flex",justifyContent:"space-between"}}>
             <div style={{display:"flex",flexDirection:"column"}}>
                 <label htmlFor="company">Company</label>
-                <input type="text"  value={data.company} onChange={onChangeHandler} name='company'/>
+                <input type="text" onChange={onChangeHandler} name='company'/>
                 {errors.company && <span style={{fontSize:"12px",color:"red"}}>*{errors.company}</span>}
             </div>
             <div  style={{display:"flex",flexDirection:"column"}}>
@@ -95,7 +134,7 @@ const Contact = ({prop}) => {
         </div>
         <div style={{display:"flex",flexDirection:"column"}}>
             <label htmlFor="describe">Additional Information</label>
-            <textarea name="additional"  value={data.additional} onChange={onChangeHandler} cols="20" rows="5"></textarea>
+            <textarea name="additional" onChange={onChangeHandler} cols="20" rows="5"></textarea>
             {errors.additional && <span style={{fontSize:"12px",color:"red"}}>*{errors.additional}</span>}
         </div>
         <div>
@@ -108,6 +147,7 @@ const Contact = ({prop}) => {
             <i className="fa-solid fa-arrow-right btnarrow"></i>
             </button>
         </div>
+        
     </div>
   )
 }
