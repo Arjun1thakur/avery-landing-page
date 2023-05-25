@@ -63,4 +63,9 @@
         width: 30vw;
         margin:0 0 0 5px;
     }
+    .is-sticky{
+        width: 320px !important;
+        margin: 0  auto !important;
+        right: initial !important ;
+    }
 }
