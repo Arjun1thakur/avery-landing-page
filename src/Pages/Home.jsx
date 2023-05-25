@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect, useState,useCallback} from 'react'
 import HomeFrame1 from '../Components/Frame1/HomeFrame1'
 import HomeFrame2 from '../Components/Frame2/HomeFrame2'
 import HomeFrame3 from '../Components/Frame3/HomeFrame3'
@@ -16,7 +16,7 @@ const Home = () => {
     setSidebarWidth(sidebarEl.width);
     setSidebarTop(sidebarEl.top);
   }, []);
-  const isSticky = (e) => {
+  const isSticky =useCallback((e) => {
     const sidebarEl = document.querySelector('.contact');
     const scrollTop = window.scrollY;
     if (scrollTop >= sidebarTop - 10) {
@@ -24,7 +24,7 @@ const Home = () => {
     } else {
       sidebarEl.classList.remove('is-sticky');
     }
-  }
+  },[sidebarTop])
   useEffect(()=>{
     if (!sidebarTop) return;
  
@@ -32,7 +32,7 @@ const Home = () => {
     return () => {
       window.removeEventListener('scroll', isSticky);
     }
-  },[sidebarTop])
+  },[isSticky,sidebarTop])
   
   let updateMessage=()=>{
     setTimeout(()=>{
