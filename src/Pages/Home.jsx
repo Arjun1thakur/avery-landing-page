@@ -32,7 +32,7 @@ const Home = () => {
     return () => {
       window.removeEventListener('scroll', isSticky);
     }
-  },[sidebarTop])
+  },[sidebarTop,isSticky])
   
   let updateMessage=()=>{
     setTimeout(()=>{
