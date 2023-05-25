@@ -51,7 +51,7 @@
     .contact{
         position: initial;
         width: 90%;
-        margin: 20px auto;
+        margin: 20px auto !important;
     }
     .subbox{
         width: 80%;
@@ -64,8 +64,8 @@
         margin:0 0 0 5px;
     }
     .is-sticky{
-        width: auto !important;
-        margin: 0  auto !important;
+        width: 90% !important;
         right: initial !important ;
+        left: 30px;
     }
 }
