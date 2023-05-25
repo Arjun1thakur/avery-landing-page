@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import HomeFrame1 from '../Components/Frame1/HomeFrame1'
 import HomeFrame2 from '../Components/Frame2/HomeFrame2'
 import HomeFrame3 from '../Components/Frame3/HomeFrame3'
@@ -9,6 +9,31 @@ import Toast from '../Components/toast/Toast'
 const Home = () => {
   let [show,setShow]=useState(true)
   let [message,setMessage]=useState(false)
+  const [sidebarTop, setSidebarTop] = useState(undefined);
+  const [sidebarWidth, setSidebarWidth] = useState(undefined);
+  useEffect(() => {
+    const sidebarEl = document.querySelector('.contact').getBoundingClientRect();
+    setSidebarWidth(sidebarEl.width);
+    setSidebarTop(sidebarEl.top);
+  }, []);
+  const isSticky = (e) => {
+    const sidebarEl = document.querySelector('.contact');
+    const scrollTop = window.scrollY;
+    if (scrollTop >= sidebarTop - 10) {
+      sidebarEl.classList.add('is-sticky');
+    } else {
+      sidebarEl.classList.remove('is-sticky');
+    }
+  }
+  useEffect(()=>{
+    if (!sidebarTop) return;
+ 
+    window.addEventListener('scroll', isSticky);
+    return () => {
+      window.removeEventListener('scroll', isSticky);
+    }
+  },[sidebarTop])
+  
   let updateMessage=()=>{
     setTimeout(()=>{
       setMessage(false)
@@ -24,7 +49,7 @@ const Home = () => {
   return (
     <>
         <HomeFrame1/>
-        {show ? <Contact prop={update} updateMessage={updateMessage}/> : null}
+        {show ? <Contact prop={update} updateMessage={updateMessage} sidebarwidth={sidebarWidth}/> : null}
         <HomeFrame2 prop={display}/>
         <HomeFrame3 prop={display}/>
         <Footer/>

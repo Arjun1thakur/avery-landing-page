@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import './contact.css'
-const Contact = ({prop,updateMessage}) => {
+const Contact = ({prop,updateMessage,sidebarwidth}) => {
   let [data,setData]=useState({})
   const [errors, setErrors] = useState({})
     useEffect(()=>{
         window.scrollTo(0, 0);
+        // let contact=document.querySelector("contact")
+
     },[])
   let onChangeHandler=(e)=>{
     setData({...data,[e.target.name]:e.target.value})
@@ -66,7 +68,7 @@ const Contact = ({prop,updateMessage}) => {
   }
 
   return (
-    <div className='contact' >
+    <div className='contact' style={{ width: sidebarwidth }}>
         <div>
             <h2>Connect with us</h2>
             <h5 style={{fontFamily:"Aktifoa-light"}}>for outstanding protective overlaminates</h5>
@@ -147,7 +149,6 @@ const Contact = ({prop,updateMessage}) => {
             <i className="fa-solid fa-arrow-right btnarrow"></i>
             </button>
         </div>
-        
     </div>
   )
 }

@@ -1,11 +1,11 @@
 
 @font-face {
     font-family: 'Aktifoa';
-    src: local('Myriad Pro Regular'), url('./Font/aktifoa-medium.otf') format('woff');
+    src: url('./Font/aktifoa-medium.otf') format('woff');
 }
 @font-face {
     font-family: 'Aktifoa-light';
-    src: local('Myriad Pro Regular'), url('./Font/aktifoa-light.otf') format('woff');
+    src: url('./Font/aktifoa-light.otf') format('woff');
 }
 *{
     margin: 0;
@@ -14,6 +14,13 @@
     font-family: Aktifoa;
     scroll-behavior: smooth;
 }
+.is-sticky {
+    position: fixed;
+    top: 10px;
+    z-index: 999;
+    transition: all 1500ms;
+    animation: 1000ms ease-in-out 0s normal none 1 running;
+  }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     display: none;
