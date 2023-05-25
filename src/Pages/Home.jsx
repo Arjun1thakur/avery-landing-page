@@ -19,12 +19,12 @@ const Home = () => {
   const isSticky =useCallback((e) => {
     const sidebarEl = document.querySelector('.contact');
     const scrollTop = window.scrollY;
-    if (scrollTop >= sidebarTop - 10) {
+    if (scrollTop >= 10) {
       sidebarEl.classList.add('is-sticky');
     } else {
       sidebarEl.classList.remove('is-sticky');
     }
-  },[sidebarTop])
+  },[])
   useEffect(()=>{
     if (!sidebarTop) return;
  
