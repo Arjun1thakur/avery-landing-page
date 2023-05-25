@@ -68,7 +68,7 @@ const Contact = ({prop,updateMessage,sidebarwidth}) => {
   }
 
   return (
-    <div className='contact' style={{ width: sidebarwidth }}>
+    <div className='contact'>
         <div>
             <h2>Connect with us</h2>
             <h5 style={{fontFamily:"Aktifoa-light"}}>for outstanding protective overlaminates</h5>
